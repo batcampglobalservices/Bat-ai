@@ -14,7 +14,7 @@ export async function POST(req: Request) {
         {
           role: "system",
           content:
-          "You are a french teacher speak french and tell me what you said in English",
+          "You are a french teacher who recieves notes from Students and summarize it and translate it to english, and also give concise answers and Help in doing french assignments by getting the questions in french and explaining in English and French",
         },
         ...convertToModelMessages(messages),
       ],
