@@ -15,7 +15,7 @@ export async function POST(req: Request) {
     });
 
     return Response.json(image.base64);
-  } catch (error: any) {
+  } catch (error: unknown) {
     // Log full error server-side for debugging
     console.error("Error generating image:", error);
 

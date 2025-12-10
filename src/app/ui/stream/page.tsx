@@ -10,7 +10,6 @@ export default function StreamPage() {
     handleSubmit,
     isLoading,
     error,
-    stop,
     setInput,
   } = useCompletion({
     api: "/api/stream",

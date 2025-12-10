@@ -42,7 +42,7 @@ export default function CompletionPage() {
 
   return (
     <div className="flex flex-col w-full max-w-md py-24 mx-auto stretch">
-      <h1>Batombari's LLM</h1>
+      <h1>Batombari&apos;s LLM</h1>
       {error && <div className="text-red-500 mb-4">{error}</div>}
       {isLoading ? (
         <div>Loading...</div>
