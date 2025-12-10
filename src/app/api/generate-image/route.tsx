@@ -21,20 +21,21 @@ export async function POST(req: Request) {
 
     // Prefer a useful message from the upstream API when available so the
     // client can display a helpful error. Fall back to a generic message.
+    const err = error as Record<string, unknown>;
     const message =
-      error?.data?.error?.message ||
-      error?.responseBody && (() => {
+      (err?.data as Record<string, unknown>)?.error?.message ||
+      (err?.responseBody && typeof err.responseBody === 'string' && (() => {
         try {
-          const parsed = JSON.parse(error.responseBody);
+          const parsed = JSON.parse(err.responseBody);
           return parsed?.error?.message;
         } catch {
           return undefined;
         }
-      })() ||
-      error?.message ||
+      })()) ||
+      (err?.message as string) ||
       "Failed to generate image";
 
-    const status = error?.statusCode || 500;
+    const status = (err?.statusCode as number) || 500;
 
     return Response.json({ error: message }, { status });
   }
